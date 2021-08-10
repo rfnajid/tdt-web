@@ -8,7 +8,7 @@ html(lang='en')
         meta(name='description', content='')
         meta(name='author', content='')
 
-        title New Age - Start Bootstrap Theme
+        title PT Talenta Daya Teknologi
 
         link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
 
@@ -17,8 +17,7 @@ html(lang='en')
 
         // Google fonts
         link(rel='preconnect', href='https://fonts.gstatic.com')
-        link(href='https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&display=swap', rel='stylesheet')
-        link(href='https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&display=swap', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&display=swap', rel='stylesheet')
 
         // Core theme CSS (includes Bootstrap)
@@ -29,149 +28,109 @@ html(lang='en')
         // Navigation
         nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top.shadow-sm
             .container.px-5
-                a.navbar-brand.fw-bold(href='#page-top') Start Bootstrap
+                a.navbar-brand.fw-bold(href='#page-top')
+                    img(src='assets/img/logo.png', alt='...', style='height: 3rem;')
+
                 button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
                     | Menu
                     i.bi-list
                 #navbarResponsive.collapse.navbar-collapse
                     ul.navbar-nav.ms-auto.me-4.my-3.my-lg-0
                         li.nav-item
-                            a.nav-link.me-lg-3(href='#features') Features
+                            a.nav-link.me-lg-3(href='/') Home
                         li.nav-item
-                            a.nav-link.me-lg-3(href='#download') Download
+                            a.nav-link.me-lg-3(href='#about') About
+                        li.nav-item
+                            a.nav-link.me-lg-3(href='#services') Services
                     button.btn.btn-primary.rounded-pill.px-3.mb-2.mb-lg-0(data-bs-toggle='modal', data-bs-target='#feedbackModal')
                         span.d-flex.align-items-center
                             i.bi-chat-text-fill.me-2
-                            span.small Send Feedback
-
+                            span.small Contact Us
         // Mashead header
         header.masthead
             .container.px-5
-                .row.gx-5.align-items-center
-                    .col-lg-6
-                        // Mashead text and app badges
-                        .mb-5.mb-lg-0.text-center.text-lg-start
-                            h1.display-1.lh-1.mb-3 Showcase your app beautifully.
-                            p.lead.fw-normal.text-muted.mb-5 Launch your mobile app landing page faster with this free, open source theme from Start Bootstrap!
-                            .d-flex.flex-column.flex-lg-row.align-items-center
-                                a.me-lg-3.mb-4.mb-lg-0(href='#!')
-                                    img.app-badge(src='assets/img/google-play-badge.svg', alt='...')
-                                a(href='#!')
-                                    img.app-badge(src='assets/img/app-store-badge.svg', alt='...')
-                    .col-lg-6
-                        // Masthead device mockup feature
-                        .masthead-device-mockup
-                            include includes/gradient-circle
-                            include includes/shape-1
-                            include includes/shape-2
-                            .device-wrapper
-                                .device(data-device='iPhoneX', data-orientation='portrait', data-color='black')
-                                    .screen.bg-black
-                                        // PUT CONTENTS HERE:
-                                        // * * This can be a video, image, or just about anything else.
-                                        // * * Set the max width of your media to 100% and the height to
-                                        // * * 100% like the demo example below.
-                                        video(muted='muted', autoplay='', loop='', style='max-width: 100%; height: 100%;')
-                                            source(src='assets/img/demo-screen.mp4', type='video/mp4')
+                .row.gx-5.content
+                    // Mashead text and app badges
+                    .mb-5.mb-lg-0.text-center.text-lg-start
+                        h1.display-1.lh-1.mb-3.slogan Your all-in one IT Solutions partner
+                        p.fw-normal.mb-5.sub-slogan We provides robust hardwares, scalable apps, and high quality talent to boost up your business productivity.
+                        .d-flex.flex-column.flex-lg-row
+            // waves
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f8f9fa" fill-opacity="1" d="M0,128L60,149.3C120,171,240,213,360,218.7C480,224,600,192,720,170.7C840,149,960,139,1080,144C1200,149,1320,171,1380,181.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
 
-        // Quote/testimonial aside
-        aside.text-center.bg-gradient-primary-to-secondary
-            .container.px-5
-                .row.gx-5.justify-content-center
-                    .col-xl-8
-                        .h2.fs-1.text-white.mb-4 "An intuitive solution to a common problem that we all face, wrapped up in a single app!"
-                        img(src='assets/img/tnw-logo.svg', alt='...', style='height: 3rem;')
+        // About section
+        section#about.bg-light.pb-0.pt-sm-1
+            .container
+                .row.gx-5.align-items-center.justify-content-center.justify-content-lg-between
+                    .col-12.col-lg-5
+                        h2.display-4.lh-1.mb-5 Who we are?
+                        p.lead.fw-normal.text-muted.mb-0.mb-lg-0 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    .col-sm-8.col-md-6
+                        // About animation
+                        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_3x67gx4y.json"  background="transparent"  speed="1" class="animation" loop  autoplay></lottie-player>
+                            
 
-        // App features section
-        section#features
+            // waves
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,128L60,149.3C120,171,240,213,360,218.7C480,224,600,192,720,170.7C840,149,960,139,1080,144C1200,149,1320,171,1380,181.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+
+        // Services section
+        section#services.pt-0.mb-5
             .container.px-5
+                .mb-5.mb-lg-0.text-center.text-lg-start
+                    h1.mb-5.text-center Our Business
                 .row.gx-5.align-items-center
+                    .col-lg-4.order-lg-0
+                            // Service Animation
+                            <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_ewwnp445.json"  background="transparent"  speed="1.5"  style="width: 300px; height: 300px;" loop autoplay></lottie-player>
                     .col-lg-8.order-lg-1.mb-5.mb-lg-0
                         .container-fluid.px-5
                             .row.gx-5
                                 .col-md-6.mb-5
-                                    // Feature item
+                                    // Service item
                                     .text-center
-                                        i.bi-phone.icon-feature.text-gradient.d-block.mb-3
-                                        h3.font-alt Device Mockups
-                                        p.text-muted.mb-0 Ready to use HTML/CSS device mockups, no Photoshop required!
+                                        i.bi-person-check.icon-feature.text-gradient.d-block.mb-3
+                                        h3.font-alt Recruitment Consultant
+                                        p.text-muted.mb-0 We provide quick and affordable recruitment services
                                 .col-md-6.mb-5
-                                    // Feature item
+                                    // Service item
                                     .text-center
-                                        i.bi-camera.icon-feature.text-gradient.d-block.mb-3
-                                        h3.font-alt Flexible Use
-                                        p.text-muted.mb-0 Put an image, video, animation, or anything else in the screen!
+                                        i.bi-code-slash.icon-feature.text-gradient.d-block.mb-3
+                                        h3.font-alt Bootcamp Training
+                                        p.text-muted.mb-0 Level up your skill with us to compete with global industry standard
                             .row
                                 .col-md-6.mb-5.mb-md-0
-                                    // Feature item
+                                    // Service item
                                     .text-center
-                                        i.bi-gift.icon-feature.text-gradient.d-block.mb-3
-                                        h3.font-alt Free to Use
-                                        p.text-muted.mb-0 As always, this theme is free to download and use for any purpose!
+                                        i.bi-display.icon-feature.text-gradient.d-block.mb-3
+                                        h3.font-alt Hardware Providers
+                                        p.text-muted.mb-0 We provide desktop computer, computer network, and server procurements
                                 .col-md-6
-                                    // Feature item
+                                    // Service item
                                     .text-center
-                                        i.bi-patch-check.icon-feature.text-gradient.d-block.mb-3
-                                        h3.font-alt Open Source
-                                        p.text-muted.mb-0 Since this theme is MIT licensed, you can use it commercially!
-                    .col-lg-4.order-lg-0
-                        // Features section device mockup
-                        .features-device-mockup
-                            include includes/gradient-circle
-                            include includes/shape-1
-                            include includes/shape-2
-                            .device-wrapper
-                                .device(data-device='iPhoneX', data-orientation='portrait', data-color='black')
-                                    .screen.bg-black
-                                        // PUT CONTENTS HERE:
-                                        // * * This can be a video, image, or just about anything else.
-                                        // * * Set the max width of your media to 100% and the height to
-                                        // * * 100% like the demo example below.
-                                        video(muted='muted', autoplay='', loop='', style='max-width: 100%; height: 100%;')
-                                            source(src='assets/img/demo-screen.mp4', type='video/mp4')
-
-        // Basic features section
-        section.bg-light
-            .container.px-5
-                .row.gx-5.align-items-center.justify-content-center.justify-content-lg-between
-                    .col-12.col-lg-5
-                        h2.display-4.lh-1.mb-4 Enter a new age of web design
-                        p.lead.fw-normal.text-muted.mb-5.mb-lg-0 This section is perfect for featuring some information about your application, why it was built, the problem it solves, or anything else! There's plenty of space for text here, so don't worry about writing too much.
-                    .col-sm-8.col-md-6
-                        .px-5.px-sm-0
-                            img.img-fluid.rounded-circle(src='https://source.unsplash.com/u8Jn2rzYIps/900x900', alt='...')
+                                        i.bi-phone.icon-feature.text-gradient.d-block.mb-3
+                                        h3.font-alt Apps
+                                        p.text-muted.mb-0 Developing and delivering great apps is our passion!
 
         // Call to action section
         section.cta
             .cta-content
                 .container.px-5
-                    h2.text-white.display-1.lh-1.mb-4
-                        | Stop waiting.
-                        br
-                        | Start building.
-                    a.btn.btn-outline-light.py-3.px-4.rounded-pill(href='https://startbootstrap.com/theme/new-age', target='_blank') Download for free
-
-        // App badge section
-        section#download.bg-gradient-primary-to-secondary
-            .container.px-5
-                h2.text-center.text-white.font-alt.mb-4 Get the app now!
-                .d-flex.flex-column.flex-lg-row.align-items-center.justify-content-center
-                    a.me-lg-3.mb-4.mb-lg-0(href='#!')
-                        img.app-badge(src='assets/img/google-play-badge.svg', alt='...')
-                    a(href='#!')
-                        img.app-badge(src='assets/img/app-store-badge.svg', alt='...')
+                    h2.text-white.display-1.lh-1.mb-5
+                        | Talk to our expert
+                    a.btn.btn-outline-light.py-4.px-4.rounded-pill(data-bs-toggle='modal', data-bs-target='#feedbackModal') Contact Us
 
         // Footer
-        footer.bg-black.text-center.py-5
-            .container.px-5
+        footer.bg-black.py-5
+            .container.px-5.text-white.mb-5
+                .row.gx-5.align-items-center.justify-content-center.justify-content-lg-between
+                    .col-md-6.col-sm-12
+                        h3.mb-3 PT. Talenta Daya Teknologi
+                        .text-muted MENARA 165, 4th Floor<br>Jl TB. Simatupang, Kav.1<br>Cilandak, Jakarta 12560<br>Email : admin@tdteknologi.co.id
+
+            .container.text-center
                 .text-white-50.small
-                    .mb-2 &copy; Your Website 2021. All Rights Reserved.
-                    a(href='#!') Privacy
-                    span.mx-1 &middot;
-                    a(href='#!') Terms
-                    span.mx-1 &middot;
-                    a(href='#!') FAQ
-        
+                    .mb-2 &copy; PT. Talenta Daya Teknologi 2021. All Rights Reserved.
+
         include includes/feedback-modal.pug
 
         // Bootstrap core JS
@@ -186,3 +145,6 @@ html(lang='en')
         // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
         script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')
+
+        //- lottie
+        script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
