@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
 * Start Bootstrap - New Age v6.0.4 (https://startbootstrap.com/theme/new-age)
-* Copyright 2013-2021 Start Bootstrap
+* Copyright 2013-2022 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-new-age/blob/master/LICENSE)
 */
 /*!
@@ -11339,6 +11339,10 @@ lottie-player {
 }
 #mainNav .navbar-nav .nav-item .nav-link.active {
   color: #159F75;
+}
+
+.navGap {
+  height: 6rem;
 }
 
 section.cta {

@@ -1,0 +1,134 @@
+html(lang='en')
+
+    // Head
+    include component/common/head.pug
+
+    body#page-top.bg-light
+
+        // Navigation
+        include component/common/navbar.pug
+
+        // Content
+        section.p-4
+        
+            .container
+            
+                // Form
+                form#inquiryForm
+
+                    h1.text-center.mb-4 Requirement Inquiry
+                    
+                    h5 Company Profile
+                    // Company Name
+                    .form-floating.mb-3
+                        input#name.form-control(
+                            type='text',
+                            placeholder='Company Name'
+                            data-sb-validations='required'
+                        )
+                        label(for='companyName') Company name
+                        .invalid-feedback(data-sb-feedback='companyName:required')
+                            | A name is required.
+                    // Company Address
+                    .form-floating.mb-3
+                        input#companyAddress.form-control(
+                            type='text',
+                            placeholder='Company Address'
+                            data-sb-validations='required'
+                        )
+                        label(for='companyAddress') Company address
+                        .invalid-feedback(data-sb-feedback='companyAddress:required')
+                            | Company Address is required.
+                    // Number of Employee
+                    .form-floating.mb-3
+                        input#numberOfEmployees.form-control(
+                            type='text',
+                            placeholder='Number of employees'
+                            data-sb-validations='required'
+                        )
+                        label(for='numberOfEmployees') Number of Employees
+                        .invalid-feedback(data-sb-feedback='numberOfEmployees:required')
+                            | Number of Employees is required.
+                    // Nature of Business
+                    .form-floating.mb-3
+                        input#natureOfBusiness.form-control(
+                            type='text',
+                            placeholder='Nature of Business'
+                            data-sb-validations='required'
+                        )
+                        label(for='natureOfBusiness') Nature of Business
+                        .invalid-feedback(data-sb-feedback='natureOfBusiness:required')
+                            | Nature of Business is required.
+                    
+                    // Additional Info
+                    .form-floating.mb-3
+                        textarea#additionalInfo.form-control(
+                            type='text',
+                            placeholder='Add your message here...',
+                            style='height: 10rem;'
+                        )
+                        label(for='additionalInfo') Additional Information
+
+                    h5.mt-5 Contact
+
+                    // PIC Name
+                    .form-floating.mb-3
+                        input#picName.form-control(
+                            type='text',
+                            placeholder='PIC Name'
+                            data-sb-validations='required'
+                        )
+                        label(for='picName') PIC Name
+                        .invalid-feedback(data-sb-feedback='picName:required')
+                            | PIC Name is required.
+
+                    // Email address input
+                    .form-floating.mb-3
+                        input#email.form-control(
+                            type='email',
+                            placeholder='name@example.com'
+                            data-sb-validations='required,email'
+                        )
+                        label(for='email') Email address
+                        .invalid-feedback(data-sb-feedback='email:required')
+                            | An email is required.
+                        .invalid-feedback(data-sb-feedback='email:email')
+                            | Email is not valid.
+                    
+                    // Phone number input
+                    .form-floating.mb-3
+                        input#phone.form-control(
+                            type='tel',
+                            placeholder='(123) 456-7890'
+                            data-sb-validations='required'
+                        )
+                        label(for='phone') Phone number
+                        .invalid-feedback(data-sb-feedback='phone:required')
+                            | A phone number is required.
+                    
+
+                    // Submit success message
+                    //
+                    // This is what your users will see when the form
+                    // has successfully submitted
+                    #submitSuccessMessage.d-none
+                        .text-center.mb-3
+                            .fw-bolder Thank You
+                            | We will respond as soon as possible
+
+                    // Submit error message
+                    //
+                    // This is what your users will see when there is
+                    // an error submitting the form
+                    #submitErrorMessage.d-none
+                        .text-center.text-danger.mb-3 Error sending message!
+
+                    // Submit Button
+                    .d-grid
+                        button#submitButton.btn.btn-primary.rounded-pill.btn-lg.my-4.disabled(type='submit') Submit
+
+        // Footer
+        include component/common/footer.pug
+
+    // Scripts
+    include component/common/script.pug

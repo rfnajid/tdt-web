@@ -1,51 +1,14 @@
 doctype html
 html(lang='en')
 
-    head
-
-        meta(charset='utf-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-        meta(name='description', content='')
-        meta(name='author', content='')
-
-        title PT Talenta Daya Teknologi
-
-        link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
-
-        // Bootstrap icons
-        link(href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css', rel='stylesheet')
-
-        // Google fonts
-        link(rel='preconnect', href='https://fonts.gstatic.com')
-        link(href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800', rel='stylesheet')
-        link(href='https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&display=swap', rel='stylesheet')
-
-        // Core theme CSS (includes Bootstrap)
-        link(href='css/styles.css', rel='stylesheet')
+    // Head
+    include component/common/head.pug
 
     body#page-top
 
         // Navigation
-        nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top.shadow-sm
-            .container.px-5
-                a.navbar-brand.fw-bold(href='#page-top')
-                    img(src='assets/img/logo.png', alt='...', style='height: 3rem;')
-
-                button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
-                    | Menu
-                    i.bi-list
-                #navbarResponsive.collapse.navbar-collapse
-                    ul.navbar-nav.ms-auto.me-4.my-3.my-lg-0
-                        li.nav-item
-                            a.nav-link.me-lg-3(href='/') Home
-                        li.nav-item
-                            a.nav-link.me-lg-3(href='#about') About
-                        li.nav-item
-                            a.nav-link.me-lg-3(href='#services') Services
-                    button.btn.btn-primary.rounded-pill.px-3.mb-2.mb-lg-0(data-bs-toggle='modal', data-bs-target='#feedbackModal')
-                        span.d-flex.align-items-center
-                            i.bi-chat-text-fill.me-2
-                            span.small Contact Us
+        include component/common/navbar.pug
+        
         // Mashead header
         header.masthead
             .container.px-5
@@ -120,31 +83,10 @@ html(lang='en')
                     a.btn.btn-outline-light.py-4.px-4.rounded-pill(data-bs-toggle='modal', data-bs-target='#feedbackModal') Contact Us
 
         // Footer
-        footer.bg-black.py-5
-            .container.px-5.text-white.mb-5
-                .row.gx-5.align-items-center.justify-content-center.justify-content-lg-between
-                    .col-md-6.col-sm-12
-                        h3.mb-3 PT. Talenta Daya Teknologi
-                        .text-muted MENARA 165, 4th Floor<br>Jl TB. Simatupang, Kav.1<br>Cilandak, Jakarta 12560<br>Email : admin@tdteknologi.co.id
+        include component/common/footer.pug
 
-            .container.text-center
-                .text-white-50.small
-                    .mb-2 &copy; PT. Talenta Daya Teknologi 2021. All Rights Reserved.
+        // Feedback Modal
+        include component/modal/feedback-modal.pug
 
-        include includes/feedback-modal.pug
-
-        // Bootstrap core JS
-        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js')
-
-        // Core theme JS
-        script(src='js/scripts.js')
-
-        // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-        // * *                               SB Forms JS                               * *
-        // * * Activate your form at https://startbootstrap.com/solution/contact-forms * *
-        // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-        script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')
-
-        //- lottie
-        script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
+    // Scripts
+    include component/common/script.pug
