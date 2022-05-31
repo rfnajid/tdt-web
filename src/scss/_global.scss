@@ -40,6 +40,14 @@ section {
     padding-bottom: 5rem;
 }
 
+
+// Form Floating Placeholder fix
+.form-floating > .form-control:focus {
+    &::placeholder {
+      color: $input-placeholder-color !important;
+    }
+  }
+
 // Set fixed height for app badges
 
 .app-badge {

@@ -1,7 +1,7 @@
 /*!
-* Start Bootstrap - New Age v6.0.4 (https://startbootstrap.com/theme/new-age)
-* Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-new-age/blob/master/LICENSE)
+* Start Bootstrap - TDT website v1.0.0 (https://tdteknologi.co.id)
+* Copyright 2013-2022 PT Talenta Daya Teknologi
+* Licensed under MIT (https://github.com/StartBootstrap/tdt-web/blob/master/LICENSE)
 */
 //
 // Scripts

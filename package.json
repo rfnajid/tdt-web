@@ -1,7 +1,7 @@
 {
-    "title": "New Age",
-    "name": "startbootstrap-new-age",
-    "version": "6.0.4",
+    "title": "TDT website",
+    "name": "tdt-web",
+    "version": "1.0.0",
     "scripts": {
         "build": "npm run clean && npm run build:pug && npm run build:scss && npm run build:scripts && npm run build:assets",
         "build:assets": "node scripts/build-assets.js",
@@ -21,19 +21,12 @@
         "theme",
         "template"
     ],
-    "homepage": "https://startbootstrap.com/theme/new-age",
-    "bugs": {
-        "url": "https://github.com/StartBootstrap/startbootstrap-new-age/issues",
-        "email": "feedback@startbootstrap.com"
-    },
+    "homepage": "https://tdteknologi.co.id",
     "license": "MIT",
-    "author": "Start Bootstrap",
-    "contributors": [
-        "David Miller (https://davidmiller.io/)"
-    ],
+    "author": "PT Talenta Daya Teknologi",
     "repository": {
         "type": "git",
-        "url": "https://github.com/StartBootstrap/startbootstrap-new-age.git"
+        "url": "https://github.com/rfnajid/tdt-web.git"
     },
     "dependencies": {
         "bootstrap": "5.1.0"
