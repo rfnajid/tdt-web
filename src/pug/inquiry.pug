@@ -14,226 +14,32 @@ html(lang='en')
             .container
             
                 // Form
-                form#inquiryForm.row
+                form#inquiryForm.row(v-scope)
                     .col-12
                         h1.text-center.mb-4 Requirement Inquiry
-                    .col-12
-                        h5 Company Profile
-                    // Company Name
-                    .col-12
-                        .form-floating.mb-3
-                            input#name.form-control(
-                                type='text',
-                                placeholder='Company Name'
-                                data-sb-validations='required'
-                            )
-                            label(for='companyName') Company name
-                            .invalid-feedback(data-sb-feedback='companyName:required')
-                                | A name is required.
-                    // Company Address
-                    .col-12
-                        .form-floating.mb-3
-                            input#companyAddress.form-control(
-                                type='text',
-                                placeholder='Company Address'
-                                data-sb-validations='required'
-                            )
-                            label(for='companyAddress') Company address
-                            .invalid-feedback(data-sb-feedback='companyAddress:required')
-                                | Company Address is required.
-                    // Nature of Business
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#natureOfBusiness.form-control(
-                                type='text',
-                                placeholder='Nature of Business'
-                                data-sb-validations='required'
-                            )
-                            label(for='natureOfBusiness') Nature of Business
-                            .invalid-feedback(data-sb-feedback='natureOfBusiness:required')
-                                | Nature of Business is required.
-                    // Number of Employee
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#numberOfEmployees.form-control(
-                                type='text',
-                                placeholder='Number of employees'
-                                data-sb-validations='required'
-                            )
-                            label(for='numberOfEmployees') Number of Employees
-                            .invalid-feedback(data-sb-feedback='numberOfEmployees:required')
-                                | Number of Employees is required.
                     
-                    // Company Selling Point
-                    .col-12
-                        .form-floating.mb-3
-                            textarea#companySellingPoint.form-control(
-                                type='text',
-                                placeholder='Unique Selling Preposition to candidates / What we should tell to candidates about your company',
-                                style='height: 10rem;'
-                            )
-                            label(for='companySellingPoint') Company Selling Point
+                    .row(v-for="section in sections")
+                        .col-12
+                            .h5 {{section.label}}
 
-                    .col-12
-                        h5.mt-5 Contact
-                    // PIC Name
-                    .col-12
-                        .form-floating.mb-3
-                            input#picName.form-control(
-                                type='text',
-                                placeholder='PIC Name'
-                                data-sb-validations='required'
-                            )
-                            label(for='picName') PIC Name
-                            .invalid-feedback(data-sb-feedback='picName:required')
-                                | PIC Name is required.
-
-                    // Email address input
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#email.form-control(
-                                type='email',
-                                placeholder='name@example.com'
-                                data-sb-validations='required,email'
-                            )
-                            label(for='email') Email address
-                            .invalid-feedback(data-sb-feedback='email:required')
-                                | An email is required.
-                            .invalid-feedback(data-sb-feedback='email:email')
-                                | Email is not valid.
-                    
-                    // Phone number input
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#phone.form-control(
-                                type='tel',
-                                placeholder='(123) 456-7890'
-                                data-sb-validations='required'
-                            )
-                            label(for='phone') Phone number
-                            .invalid-feedback(data-sb-feedback='phone:required')
-                                | A phone number is required.
-                    
-                    
-                    .col-12
-                        h5.mt-5 Job Specification
-                    // Position
-                    .col-12
-                        .form-floating.mb-3
-                            input#jobPosition.form-control(
-                                type='text',
-                                placeholder='Position'
-                                data-sb-validations='required'
-                            )
-                            label(for='jobPosition') Job Position
-                            .invalid-feedback(data-sb-feedback='jobPosition:required')
-                                | Job Position is required.
-                    // Quota
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#jobQuota.form-control(
-                                type='number',
-                                placeholder='Job Quota'
-                                data-sb-validations='required'
-                            )
-                            label(for='jobQuota') Job Quota
-                            .invalid-feedback(data-sb-feedback='jobQuota:required')
-                                | Job Quota is required.
-                    // Employment Status
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#employmentStatus.form-control(
-                                type='text',
-                                placeholder='Employment Status'
-                                data-sb-validations='required'
-                            )
-                            label(for='employmentStatus') Employment Status
-                            .invalid-feedback(data-sb-feedback='employmentStatus:required')
-                                | Employment Status is required.
-                    // Salary Range
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#salaryRange.form-control(
-                                type='text',
-                                placeholder='Salary Range'
-                                data-sb-validations='required'
-                            )
-                            label(for='salaryRange') Salary Range
-                            .invalid-feedback(data-sb-feedback='salaryRange:required')
-                                | Salary Range is required.
-                    // Work Location
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#workLocation.form-control(
-                                type='text',
-                                placeholder='Work Location'
-                                data-sb-validations='required'
-                            )
-                            label(for='workLocation') Work Location
-                            .invalid-feedback(data-sb-feedback='workLocation:required')
-                                | Work Location is required.                    
-                    // Academic Qualification
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#academicQualification.form-control(
-                                type='text',
-                                placeholder='Academic Qualification'
-                                data-sb-validations='required'
-                            )
-                            label(for='academicQualification') Academic Qualification
-                            .invalid-feedback(data-sb-feedback='academicQualification:required')
-                                | Academic Qualification is required.
-                    // Years of Experience
-                    .col-md-6
-                        .form-floating.mb-3
-                            input#yearsOfExperience.form-control(
-                                type='text',
-                                placeholder='Years of Experience'
-                                data-sb-validations='required'
-                            )
-                            label(for='yearsOfExperience') Years of Experience
-                            .invalid-feedback(data-sb-feedback='yearsOfExperience:required')
-                                | Years of Experience is required.                            
-                    // Skill set (keyword)
-                    .col-12
-                        .form-floating.mb-3
-                            input#yearsOfExperience.form-control(
-                                type='text',
-                                placeholder='Skill set (keyword)'
-                                data-sb-validations='required'
-                            )
-                            label(for='yearsOfExperience') Skill set (keyword)
-                            .invalid-feedback(data-sb-feedback='yearsOfExperience:required')
-                                | Skill set  is required
-                    // Job Description
-                    .col-12
-                        .form-floating.mb-3
-                            textarea#jobDescription.form-control(
-                                type='text',
-                                placeholder='Job Description',
-                                style='height: 10rem;'
-                            )
-                            label(for='jobDescription') Job Description
-                    // Job Requirement
-                    .col-12
-                        .form-floating.mb-3
-                            textarea#jobRequirement.form-control(
-                                type='text',
-                                placeholder='Job Requirement',
-                                style='height: 10rem;'
-                            )
-                            label(for='jobRequirement') Job Requirement                    
-                    // Additional Requirement
-                    .col-12
-                        .form-floating.mb-3
-                            textarea#additionalRequirement.form-control(
-                                type='text',
-                                placeholder='Additional Requirement',
-                                style='height: 10rem;'
-                            )
-                            label(for='additionalRequirement') Additional Requirement
-
-
+                        template(v-for="fieldName in section.fields")
+                            div(:class="fields[fieldName].gridSize")
+                                .form-floating.mb-3
+                                    input.form-control(
+                                        :id="fieldName", v-if="fields[fieldName].type!='textarea'",
+                                        :type="fields[fieldName].type",
+                                        :placeholder="fields[fieldName].placeholder"
+                                        :required="fields[fieldName].required"
+                                    )
+                                    textarea.form-control(
+                                        :id="fieldName",v-if="fields[fieldName].type==='textarea'",
+                                        :placeholder="fields[fieldName].placeholder"
+                                        style='height: 10rem;'
+                                    )
+                                    label(:for="fieldName") {{fields[fieldName].label}} {{fields[fieldName].required?'*':''}}  
+                                    .invalid-feedback(data-sb-feedback='companyName:required')
+                                        | A name is required.
+                        
                     // Submit success message
                     //
                     // This is what your users will see when the form
@@ -261,4 +67,4 @@ html(lang='en')
         include component/common/footer.pug
 
     // Scripts
-    include component/common/script.pug
+    include component/script/inquiry-script.pug
