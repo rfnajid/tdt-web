@@ -20,7 +20,7 @@ html(lang='en')
                     
                     .row(v-for="section in sections")
                         .col-12.d-inline-flex
-                            h5 {{section.label}}
+                            h5 {{section.label}} {{section.isJobSpec ? ' '+data.jobSpec[section.jobSpecId].jobPosition:''}}
                             i.bi.bi-trash.mx-3(
                                 v-if="section.deleteable",
                                 @click="deleteSection(section.id)"
@@ -30,18 +30,22 @@ html(lang='en')
                             div(:class="fields[fieldName].gridSize")
                                 .form-floating.mb-3
                                     input.form-control(
-                                        :id="fieldName", v-if="fields[fieldName].type!='textarea'",
+                                        :id="section.id+'-'+fieldName", v-if="fields[fieldName].type!='textarea'",
                                         :type="fields[fieldName].type",
                                         :placeholder="fields[fieldName].placeholder"
-                                        :required="fields[fieldName].required"
+                                        :required="fields[fieldName].required",
+                                        :value="section.isJobSpec ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
+                                        v-on:input="onChange($event, section, fieldName)"
                                     )
                                     textarea.form-control(
-                                        :id="fieldName",v-if="fields[fieldName].type==='textarea'",
-                                        :placeholder="fields[fieldName].placeholder"
-                                        style='height: 10rem;'
+                                        :id="section.id+'-'+fieldName",v-if="fields[fieldName].type==='textarea'",
+                                        :placeholder="fields[fieldName].placeholder",
+                                        style='height: 10rem;',
+                                        :value="section.isJobSpec ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
+                                        v-model="section.isJobSpec ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
                                     )
                                     label(:for="fieldName") {{fields[fieldName].label}} {{fields[fieldName].required?'*':''}}  
-                                    .invalid-feedback(data-sb-feedback='companyName:required')
+                                    .invalid-feedback(formModel-sb-feedback='companyName:required')
                                         | A name is required.
                         
                     // Submit success message
