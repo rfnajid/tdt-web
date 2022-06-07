@@ -77,7 +77,7 @@ createApp({
         jobPosition : {
             type: 'text',
             label: 'Job Position',
-            placeholder: '',
+            placeholder: 'Software Engineer, Product Manager, Data Analyst',
             required: true,
             value: null,
             gridSize: 'col-12'
@@ -165,26 +165,50 @@ createApp({
     },
     sections:[
         {
+            id: 'company-profile',
             label: 'Company Profile',
+            deleteable: false,
             fields : [
                 'companyName', 'companyAddress','businessType',
                 'numberOfEmployees', 'companySellingPoint'
             ]
         },
         {
+            id: 'contact',
             label: 'Contact',
+            deleteable: false,
             fields : [
                 'picName', 'email','phone'
             ]
         },
-        {
-            label: 'Contact',
+    ],
+    jobSpecCount: 1,
+    addJob (deletable=true) {
+        console.log('add job clicked');
+        var newJobSpec = {
+            id: 'job-spec-'+this.jobSpecCount,
+            label: 'Job Specification '+this.jobSpecCount,
+            deleteable: deletable,
             fields : [
                 'jobPosition', 'jobQuota','employementStatus',
                 'workLocation','salaryRange','academicQualification',
                 'yearsOfExperience','skillSet','jobDescription',
                 'jobRequirement','otherRequirement'
             ]
-        },
-    ]
-}).mount('#inquiryForm');
+        };
+        this.sections.push(newJobSpec);
+        this.jobSpecCount++;
+    },
+    deleteSection(sectionId) {
+        console.log('delete section', sectionId);
+        this.sections = this.sections.filter(section => section.id!=sectionId);
+    },
+    onSubmit(){
+        console.log('submit');
+        console.log('this', this);
+    },
+    onMounted() {
+        console.log('inquiry mounted');
+        this.addJob(false);
+    },
+}).mount();

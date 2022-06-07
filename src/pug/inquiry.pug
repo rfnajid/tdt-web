@@ -14,13 +14,17 @@ html(lang='en')
             .container
             
                 // Form
-                form#inquiryForm.row(v-scope)
+                form#inquiryForm.row(@vue:mounted="onMounted")
                     .col-12
                         h1.text-center.mb-4 Requirement Inquiry
                     
                     .row(v-for="section in sections")
-                        .col-12
-                            .h5 {{section.label}}
+                        .col-12.d-inline-flex
+                            h5 {{section.label}}
+                            i.bi.bi-trash.mx-3(
+                                v-if="section.deleteable",
+                                @click="deleteSection(section.id)"
+                            )
 
                         template(v-for="fieldName in section.fields")
                             div(:class="fields[fieldName].gridSize")
@@ -58,10 +62,12 @@ html(lang='en')
                         #submitErrorMessage.d-none
                             .text-center.text-danger.mb-3 Error sending message!
 
-                    // Submit Button
+                    // Add More Job Spec
                     .col-12
-                        .d-grid
-                            button#submitButton.btn.btn-primary.rounded-pill.btn-lg.my-4.disabled(type='submit') Submit
+                        button.btn.btn-primary.rounded-pill.btn-lg(@click.prevent='addJob()') Add More Job Specification
+                    // Submit Button
+                    .col-12.text-center
+                        button.btn.btn-primary.rounded-pill.btn-lg.my-4(@click.prevent='onSubmit()') Submit
 
         // Footer
         include component/common/footer.pug
