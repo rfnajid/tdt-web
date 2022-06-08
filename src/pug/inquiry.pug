@@ -20,7 +20,7 @@ html(lang='en')
                     
                     .row(v-for="section in sections")
                         .col-12.d-inline-flex
-                            h5 {{section.label}} {{section.isJobSpec ? ' '+data.jobSpec[section.jobSpecId].jobPosition:''}}
+                            h5.my-4 {{section.label}} {{section.isJobSpec ? ' '+data.jobSpec[section.jobSpecId].jobPosition:''}}
                             i.bi.bi-trash.mx-3(
                                 v-if="section.deleteable",
                                 @click="deleteSection(section.id)"
@@ -31,6 +31,7 @@ html(lang='en')
                                 .form-floating.mb-3
                                     input.form-control(
                                         :id="section.id+'-'+fieldName", v-if="fields[fieldName].type!='textarea'",
+                                        :class="validate(fieldName, section.jobSpecId)?'':'is-invalid'"
                                         :type="fields[fieldName].type",
                                         :placeholder="fields[fieldName].placeholder"
                                         :required="fields[fieldName].required",
@@ -39,14 +40,13 @@ html(lang='en')
                                     )
                                     textarea.form-control(
                                         :id="section.id+'-'+fieldName",v-if="fields[fieldName].type==='textarea'",
+                                        :class="validate(fieldName, section.jobSpecId)?'':'is-invalid'"
                                         :placeholder="fields[fieldName].placeholder",
                                         style='height: 10rem;',
                                         :value="section.isJobSpec ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
                                         v-model="section.isJobSpec ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
                                     )
                                     label(:for="fieldName") {{fields[fieldName].label}} {{fields[fieldName].required?'*':''}}  
-                                    .invalid-feedback(formModel-sb-feedback='companyName:required')
-                                        | A name is required.
                         
                     // Submit success message
                     //
@@ -58,17 +58,18 @@ html(lang='en')
                                 .fw-bolder Thank You
                                 | We will respond as soon as possible
 
+                    // Add More Job Spec
+                    .col-12
+                        button.btn.btn-primary.rounded-pill.btn-lg(@click.prevent='addJob()') Add More Job Specification
+
                     // Submit error message
                     //
                     // This is what your users will see when there is
                     // an error submitting the form
                     .col-12
                         #submitErrorMessage.d-none
-                            .text-center.text-danger.mb-3 Error sending message!
-
-                    // Add More Job Spec
-                    .col-12
-                        button.btn.btn-primary.rounded-pill.btn-lg(@click.prevent='addJob()') Add More Job Specification
+                            .text-center.text-danger.mb-3 Error submitting form!
+                            
                     // Submit Button
                     .col-12.text-center
                         button.btn.btn-primary.rounded-pill.btn-lg.my-4(@click.prevent='onSubmit()') Submit

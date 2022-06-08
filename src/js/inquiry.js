@@ -207,7 +207,7 @@ createApp({
        
         this.sections.push(newJobSpec);
 
-        console.log('jobSpec', JSON.stringify(this.data.jobSpec));
+        console.log('sections', this.sections);
     },
     deleteSection(sectionId) {
         console.log('delete section', sectionId);
@@ -218,8 +218,16 @@ createApp({
         console.log('this.data.jobSpec', this.data.jobSpec);
     },
     onSubmit(){
-        console.log('submit data', JSON.stringify(this.data));
-        console.log('suthis.data.jobSpec', JSON.stringify(this.data.jobSpec));
+
+        var data = JSON.parse(JSON.stringify(this.data));
+        console.log('submitting', data);
+
+        // validation
+        if(!this.validateAll()){
+            return;
+        }
+
+        // hit api here
     },
     onChange(event, section, fieldName){
         var value = event.target.value;
@@ -228,8 +236,49 @@ createApp({
         }else{
             this.data[fieldName] = value;
         }
+    },
+    validate(fieldName, jobSpecId=null) {
+        var data = JSON.parse(JSON.stringify(this.data));
 
-        console.log('change', JSON.stringify(this.data));
+        var res = true;
+        var val;
+        if (jobSpecId!=0 && !jobSpecId){ // not job spec
+            val = data[fieldName];
+        } else {
+            val = data.jobSpec[jobSpecId][fieldName];
+        }
+
+
+        // mandatory validation
+        if(this.fields[fieldName]?.required){
+            res = val ? true : false;
+        }
+
+        console.log('jobSpec : '+jobSpecId+', validate '+fieldName+' : '+res);
+
+        return res;
+    },
+    validateAll(){
+        
+        var res = true;
+        
+        res = Object.keys(this.data).every(key => {
+            return this.validate(key);
+        });
+        if(!res){
+            return res;
+        }
+
+        // check jobSpec
+        res = this.data.jobSpec.every((item, i) => {
+            return Object.keys(item).every(key => {
+                return this.validate(key, i);
+            });
+        });
+
+        console.log('validation : ', res);
+
+        return res;
     },
     onMounted() {
         console.log('inquiry mounted');
