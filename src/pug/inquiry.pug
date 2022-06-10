@@ -31,10 +31,10 @@ html(lang='en')
                     
                     .row(v-for="section in sections")
                         .col-12.d-inline-flex.my-4
-                            h5 {{section.label}} {{section.isJobSpec ? ' '+data.jobSpec[section.jobSpecId].jobPosition:''}}
+                            h5 {{section.label}} {{section.isJobSpec ? ' '+data.jobSpec[section.jobSpecId]?.jobPosition:''}}
                             i.bi.bi-trash.mx-3(
                                 v-if="section.deleteable",
-                                @click="deleteSection(section.id)"
+                                @click="deleteSection(section.jobSpecId)"
                             )
 
                         template(v-for="fieldName in section.fields")
@@ -46,7 +46,7 @@ html(lang='en')
                                         :type="fields[fieldName].type",
                                         :placeholder="fields[fieldName].placeholder"
                                         :required="fields[fieldName].required",
-                                        :value="section.isJobSpec ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
+                                        :value="section.isJobSpec && data.jobSpec[section.jobSpecId] ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
                                         v-on:input="onChange($event, section, fieldName)"
                                     )
                                     textarea.form-control(
@@ -54,26 +54,26 @@ html(lang='en')
                                         :class="validate(fieldName, section.jobSpecId)?'':'is-invalid'"
                                         :placeholder="fields[fieldName].placeholder",
                                         style='height: 10rem;',
-                                        :value="section.isJobSpec ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
-                                        v-model="section.isJobSpec ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
+                                        :value="section.isJobSpec && data.jobSpec[section.jobSpecId] ? data.jobSpec[section.jobSpecId][fieldName] : data[fieldName]"
+                                        v-on:input="onChange($event, section, fieldName)"
                                     )
                                     label(:for="fieldName") {{fields[fieldName].label}} {{fields[fieldName].required?'*':''}}  
                         
                     // Add More Job Spec
                     .col-12
                         button.btn.btn-primary.rounded-pill.btn-lg(@click.prevent='addJob()') Add More Job Specification
+                            
+                    // Submit Button
+                    .col-12.text-center
+                        button.btn.btn-primary.rounded-pill.btn-lg.mt-4(@click.prevent='onSubmit()') Submit
 
                     // Submit error message
                     //
                     // This is what your users will see when there is
                     // an error submitting the form
-                    .col-12
-                        #submitErrorMessage.d-none
-                            .text-center.text-danger.mb-3 Error submitting form!
-                            
-                    // Submit Button
-                    .col-12.text-center
-                        button.btn.btn-primary.rounded-pill.btn-lg.my-4(@click.prevent='onSubmit()') Submit
+                    .col-12.mt-4(v-if="isError")
+                        #submitErrorMessage
+                            .text-center.text-danger.h5 Error submitting form!
 
         // Footer
         include component/common/footer.pug

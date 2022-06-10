@@ -211,14 +211,14 @@ createApp({
        
         this.sections.push(newJobSpec);
 
-        console.log('sections', this.sections);
+        console.log('active sections', this.sections);
     },
-    deleteSection(sectionId) {
-        console.log('delete section', sectionId);
-        this.sections = this.sections.filter(section => section.id!=sectionId);
-        this.data.jobSpec = delete this.data.jobSpec[sectionId];
+    deleteSection(jobSpecId) {
+        console.log('delete section jobSpec', jobSpecId);
+        this.sections = this.sections.filter(section => section.jobSpecId != jobSpecId);
+        delete this.data.jobSpec[jobSpecId];
 
-        console.log('sections', this.sections);
+        console.log('delete sections result', this.sections);
         console.log('this.data.jobSpec', this.data.jobSpec);
     },
     onSubmit(){
@@ -232,7 +232,7 @@ createApp({
         }
 
         // map
-        var mappedData = data.jobSpec.map((item)=> {
+        var mappedData = data.jobSpec.filter(item => item!=undefined).map((item)=> {
             return {
                 companyName: data.companyName,
                 companyAddress: data.companyAddress,
@@ -304,7 +304,7 @@ createApp({
         if (jobSpecId!=0 && !jobSpecId){ // not job spec
             val = data[fieldName];
         } else {
-            val = data.jobSpec[jobSpecId][fieldName];
+            val = data.jobSpec[jobSpecId]? data.jobSpec[jobSpecId][fieldName]:true;
         }
 
 
