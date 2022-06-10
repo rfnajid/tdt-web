@@ -4,17 +4,21 @@
 
 console.log('inquiry js initiated');
 
+var INQUIRY_SUBMIT_URL = "http://localhost/api/v1/inquiry";
+
 import { createApp } from "https://unpkg.com/petite-vue?module";
 createApp({
+    isSuccess: false,
+    isError: false,
     data:{
-        companyName:'',
-        companyAddress:'',
-        businessType:'',
-        numberOfEmployees:'',
-        companySellingPoint:'',
-        picName:'',
-        email:'',
-        phone:'',
+        companyName:'tes',
+        companyAddress:'tes',
+        businessType:'tes',
+        numberOfEmployees:'tes',
+        companySellingPoint:'tes',
+        picName:'tes',
+        email:'tes',
+        phone:'ets',
         jobSpec: []
     },
     fields:{
@@ -91,7 +95,7 @@ createApp({
             required: true,
             gridSize: 'col-md-6'
         },
-        employementStatus : {
+        employmentStatus : {
             type: 'text',
             label: 'Employment Status',
             placeholder: 'Permanent, Contract, Freelance',
@@ -177,17 +181,17 @@ createApp({
     addJob (deletable=true) {
         console.log('add job clicked');
         this.data.jobSpec.push({
-            jobPosition:'',
-            jobQuota:'',
-            employementStatus:'',
-            workLocation:'',
-            salaryRange:'',
-            academicQualification:'',
-            yearsOfExperience:'',
-            skillSet:'',
-            jobDescription:'',
-            jobRequirement:'',
-            otherRequirement:''
+            jobPosition:'tes',
+            jobQuota:'tes',
+            employmentStatus:'tes',
+            workLocation:'tes',
+            salaryRange:'tes',
+            academicQualification:'tes',
+            yearsOfExperience:'tes',
+            skillSet:'tes',
+            jobDescription:'tes',
+            jobRequirement:'tes',
+            otherRequirement:'tes'
         });
         var jobSpecCount = this.data.jobSpec.length-1;
         var jobSpecId = 'jobSpec'+jobSpecCount;
@@ -198,7 +202,7 @@ createApp({
             isJobSpec: true,
             jobSpecId: jobSpecCount,
             fields : [
-                'jobPosition', 'jobQuota','employementStatus',
+                'jobPosition', 'jobQuota','employmentStatus',
                 'workLocation','salaryRange','academicQualification',
                 'yearsOfExperience','skillSet','jobDescription',
                 'jobRequirement','otherRequirement'
@@ -227,7 +231,62 @@ createApp({
             return;
         }
 
+        // map
+        var mappedData = data.jobSpec.map((item)=> {
+            return {
+                companyName: data.companyName,
+                companyAddress: data.companyAddress,
+                businessType: data.businessType,
+                numberOfEmployees: data.numberOfEmployees,
+                companySellingPoint: data.companySellingPoint,
+                picName: data.picName,
+                email: data.email,
+                phone: data.phone,
+
+                jobPosition: item.jobPosition,
+                jobQuota: item.jobQuota,
+                employmentStatus: item.employmentStatus,
+                workLocation: item.workLocation,
+                salaryRange: item.salaryRange,
+                academicQualification: item.academicQualification,
+                yearsOfExperience: item.yearsOfExperience,
+                skillSet: item.skillSet,
+                jobDescription: item.jobDescription,
+                jobRequirement: item.jobRequirement,
+                otherRequirement: item.otherRequirement
+            };
+        });
+
         // hit api here
+        this.submitInquiry(mappedData);
+    },
+    submitInquiry(mappedData) {
+        console.log('submit inquiry, mapped data', mappedData);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(mappedData)
+        };
+
+        var submitRes = fetch(INQUIRY_SUBMIT_URL, requestOptions)
+            .then(response => {
+                console.log('submit inquiry success', response.json());    
+                this.showSuccess();
+            })
+            .catch(e => {
+                console.log('submit inquiry error', e);
+                this.showError();
+            });
+
+        console.log('submitRes',submitRes);
+    },
+    showSuccess(){
+        this.isSuccess = true;
+        this.isError = false;
+    },
+    showError(){
+        this.isSuccess = false;
+        this.isError = true;
     },
     onChange(event, section, fieldName){
         var value = event.target.value;

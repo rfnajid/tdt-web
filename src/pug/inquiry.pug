@@ -12,15 +12,26 @@ html(lang='en')
         section.p-4
         
             .container
+
+                // Submit success message
+                //
+                // This is what your users will see when the form
+                // has successfully submitted
+                .col-12(v-if="isSuccess")
+                    #submitSuccessMessage
+                        .text-center.mb-3
+                            .fw-bolder Thank You
+                            | We will respond as soon as possible
+
             
                 // Form
-                form#inquiryForm.row(@vue:mounted="onMounted")
+                form#inquiryForm.row(@vue:mounted="onMounted", v-else)
                     .col-12
                         h1.text-center.mb-4 Requirement Inquiry
                     
                     .row(v-for="section in sections")
-                        .col-12.d-inline-flex
-                            h5.my-4 {{section.label}} {{section.isJobSpec ? ' '+data.jobSpec[section.jobSpecId].jobPosition:''}}
+                        .col-12.d-inline-flex.my-4
+                            h5 {{section.label}} {{section.isJobSpec ? ' '+data.jobSpec[section.jobSpecId].jobPosition:''}}
                             i.bi.bi-trash.mx-3(
                                 v-if="section.deleteable",
                                 @click="deleteSection(section.id)"
@@ -48,16 +59,6 @@ html(lang='en')
                                     )
                                     label(:for="fieldName") {{fields[fieldName].label}} {{fields[fieldName].required?'*':''}}  
                         
-                    // Submit success message
-                    //
-                    // This is what your users will see when the form
-                    // has successfully submitted
-                    .col-12
-                        #submitSuccessMessage.d-none
-                            .text-center.mb-3
-                                .fw-bolder Thank You
-                                | We will respond as soon as possible
-
                     // Add More Job Spec
                     .col-12
                         button.btn.btn-primary.rounded-pill.btn-lg(@click.prevent='addJob()') Add More Job Specification
